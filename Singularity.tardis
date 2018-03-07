@@ -1,0 +1,20 @@
+Bootstrap: docker
+    From: gw000/debian-cuda:8.0_7.0
+
+%labels
+    AUTHOR krause@mpib-berlin.mpg.de
+    CUDA 8.0
+
+%post
+    apt-get update
+    apt-get -y install wget python-minimal libgomp1 nvidia-smi ca-certificates
+    wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py
+    python2 fslinstaller.py -d /usr/local/fsl
+    wget -O- https://fsl.fmrib.ox.ac.uk/fsldownloads/patches/eddy-patch-fsl-5.0.11/centos6/eddy_cuda8.0  > /usr/local/fsl/bin/eddy_cuda
+    wget -O- https://fsl.fmrib.ox.ac.uk/fsldownloads/patches/eddy-patch-fsl-5.0.11/centos6/eddy_openmp > /usr/local/fsl/bin/eddy_openmp
+
+%environment
+    FSLDIR=/usr/local/fsl
+    . ${FSLDIR}/etc/fslconf/fsl.sh
+    PATH=${FSLDIR}/bin:${PATH}
+    export FSLDIR PATH
