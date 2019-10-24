@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: debian:9
+From: gw000/debian-cuda:9.0_7.0
 
 %labels
     AUTHOR krause@mpib-berlin.mpg.de
@@ -17,6 +17,7 @@ From: debian:9
     echo '/usr/local/fsl/lib' > /etc/ld.so.conf.d/fsl.conf
     ldconfig
     /usr/local/fsl/fslpython/condabin/conda clean -ay
+    apt-get purge cuda-*-9-0  # cuda9 is 9.1
     apt-get clean && apt-get autoremove
 
 %environment

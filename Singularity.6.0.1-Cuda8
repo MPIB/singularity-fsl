@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: debian:9
+From: gw000/debian-cuda:8.0_7.0
 
 %labels
     AUTHOR krause@mpib-berlin.mpg.de
