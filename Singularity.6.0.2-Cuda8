@@ -11,7 +11,7 @@ From: gw000/debian-cuda:8.0_7.0
             libjpeg62-turbo libpng16-16 libxrender1 libxcursor1 \
             libxinerama1 libfreetype6 libxft2 libxrandr2 libmng1 \
             libgtk2.0-0 libpulse0 libasound2 libcaca0 libopenblas-base \
-            bzip2 dc
+            bzip2 dc bc
     wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py
     python2 fslinstaller.py -d /usr/local/fsl -V 6.0.2
     echo '/usr/local/fsl/lib' > /etc/ld.so.conf.d/fsl.conf
