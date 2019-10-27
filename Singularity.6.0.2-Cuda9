@@ -16,9 +16,7 @@ From: gw000/debian-cuda:9.0_7.0
     python2 fslinstaller.py -d /usr/local/fsl -V 6.0.1
     echo '/usr/local/fsl/lib' > /etc/ld.so.conf.d/fsl.conf
     ldconfig
-    /usr/local/fsl/fslpython/condabin/conda clean -ay
-    apt-get purge -y cuda-*-9-0  # cuda9 is 9.1
-    apt-get clean && apt-get autoremove
+    apt-get clean && apt-get -y autoremove
 
 %environment
     FSLDIR=/usr/local/fsl
