@@ -1,12 +1,13 @@
 Bootstrap: docker
-From: gw000/debian-cuda:8.0_7.0
+From: debian:9
 
 %labels
     AUTHOR krause@mpib-berlin.mpg.de
 
 %post
-    apt-get update && apt-get -y dist-upgrade
-    apt-get -y install wget python-minimal libgomp1 ca-certificates \
+    apt-get update
+    DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install \
+            wget python-minimal libgomp1 ca-certificates \
             libglu1-mesa libgl1-mesa-glx libsm6 libice6 libxt6 \
             libjpeg62-turbo libpng16-16 libxrender1 libxcursor1 \
             libxinerama1 libfreetype6 libxft2 libxrandr2 libmng1 \
@@ -14,8 +15,15 @@ From: gw000/debian-cuda:8.0_7.0
             bzip2 dc bc
     wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py
     python2 fslinstaller.py -d /usr/local/fsl -V 6.0.2
+    #cat /tmp/fslpython*/fslpython_miniconda_installer.log
     echo '/usr/local/fsl/lib' > /etc/ld.so.conf.d/fsl.conf
     ldconfig
+    echo 'deb http://deb.debian.org/debian stretch main contrib non-free'          > /etc/apt/sources.list
+    echo 'deb http://deb.debian.org/debian stretch-updates main contrib non-free' >> /etc/apt/sources.list
+    echo 'deb http://security.debian.org stretch/updates main contrib non-free'   >> /etc/apt/sources.list
+    apt-get update
+    DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install \
+        nvidia-cuda-toolkit libcupti-dev nvidia-driver nvidia-smi
     apt-get clean && apt-get autoremove -y
 
 %environment
