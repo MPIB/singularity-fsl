@@ -30,6 +30,7 @@ From: debian:9
         nvidia-cuda-toolkit libcupti-dev nvidia-driver nvidia-smi
     apt-get clean && apt-get autoremove -y
     rm -f fslinstaller.py bedpostx_gpu.zip probtrackx_gpu.zip
+    ln -sf /usr/local/fsl/bin{eddy_cuda8.0,eddy_cuda}
 
 %environment
     FSLDIR=/usr/local/fsl

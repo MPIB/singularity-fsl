@@ -25,8 +25,10 @@ From: debian:9-slim
     python2 fslinstaller.py -d /usr/local/fsl -V 6.0.3
     echo '/usr/local/fsl/lib' > /etc/ld.so.conf.d/fsl.conf
     ldconfig
+    cd /usr/local/fsl/bin && ln -sf eddy_cuda9.1 eddy_cuda
     apt-get clean && apt-get -y autoremove
     rm -f fslinstaller.py
+    ln -sf /usr/local/fsl/bin{eddy_cuda9.1,eddy_cuda}
 
 %environment
     FSLDIR=/usr/local/fsl
