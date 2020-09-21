@@ -4,11 +4,11 @@
 
 ```
 # Download a (versioned) container
-singularity pull shub://MPIB/singularity-fsl:6.0.2
+singularity pull shub://MPIB/singularity-fsl:6.0.4
 
 # Run it
-singularity exec singularity-fsl_6.0.2.sif fslmaths
-singularity exec --nv singularity-fsl_6.0.2.sif eddy_cuda9.1
+singularity exec singularity-fsl_6.0.4.sif fslmaths
+singularity exec --nv singularity-fsl_6.0.4.sif eddy_cuda9.1
 ```
 
 ## FSL
