@@ -29,7 +29,7 @@ From: debian:9-slim
     unzip -o bedpostx_gpu.zip -d /usr/local/fsl/bin/
     apt-get clean && apt-get autoremove -y
     rm -f fslinstaller.py bedpostx_gpu.zip probtrackx_gpu.zip
-    ln -sf /usr/local/fsl/bin/{eddy_cuda8.0,eddy_cuda}
+    ln -sf /usr/local/fsl/bin/eddy_cuda8.0 /usr/local/fsl/bin/eddy_cuda
 
 %environment
     FSLDIR=/usr/local/fsl
