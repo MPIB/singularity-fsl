@@ -1,15 +1,37 @@
-[![https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg](https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg)](https://singularity-hub.org/collections/702)
+This is a very unofficial repo for FSL singularity recipes used at the
+[MPIB](https://www.mpib-berlin.mpg.de/). A while ago we used to automatically
+push images to the amazing singularity hub. Since that project has been
+abandoned, we use this repo primarily as a recipe reference.
 
-## Quick start
+The base container is debian 10 and it should work fine with CUDA as well.
+
+## Build
+```
+export VERSION=6.0.6.1
+singularity build fsl-$VERSION.sif Singularity.$VERSION
+```
+
+## Run it
+```
+singularity exec fsl-$VERSION.sif fslmaths
+singularity exec --nv fsl-$VERSION eddy_cuda9.1
+```
+
+
+Some older images are still available on the
+[read-only](https://singularityhub.github.io/singularityhub-docs/2021/going-read-only/)
+[mirror provided by
+datalad.org](https://datasets.datalad.org/?dir=/shub/MPIB/singularity-fsl) and
+can be pulled directly.
+
+## older, pre-built images from singularity-hub
+(last updated  in April 2021)
 
 ```
 # Download a (versioned) container
-singularity pull shub://MPIB/singularity-fsl:6.0.4
-
-# Run it
-singularity exec singularity-fsl_6.0.4.sif fslmaths
-singularity exec --nv singularity-fsl_6.0.4.sif eddy_cuda9.1
+singularity pull shub://MPIB/singularity-fsl:6.0.3
 ```
+
 
 ## FSL
 
